@@ -27,6 +27,8 @@ public class Main {
 		Client client = new Client("Philip");
 		client.openConnection("10.0.0.3", 25565);
 		
+		System.out.println("SPEEDY");
+		
 		client.addMessageEvent(new MessageEventListener()
 		{
 			@Override
