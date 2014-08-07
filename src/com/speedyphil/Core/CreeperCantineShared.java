@@ -7,6 +7,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import com.speedyphil.LangzeitEvent.LangzeitCommandListener;
 import com.speedyphil.LangzeitEvent.LangzeitConfiguration;
+import com.speedyphil.LangzeitEvent.LangzeitManager;
 import com.speedyphil.LangzeitEvent.LangzeitPlayerListener;
 
 
@@ -15,6 +16,7 @@ public class CreeperCantineShared extends JavaPlugin
 	private static LangzeitCommandListener lzCL = new LangzeitCommandListener();
 	private static LangzeitPlayerListener lzPL = new LangzeitPlayerListener();
 	private static LangzeitConfiguration lzCF = new LangzeitConfiguration();
+	private static LangzeitManager lzMG = new LangzeitManager();
 
 	private static String pluginname = "LangzeitEvent";
 	
@@ -67,6 +69,10 @@ public class CreeperCantineShared extends JavaPlugin
 	
 	public static LangzeitConfiguration getLangzeitConfiguration() {
 		return lzCF;
+	}
+	
+	public static LangzeitManager getLangzeitManager() {
+		return lzMG;
 	}
 }
 
