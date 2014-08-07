@@ -36,12 +36,12 @@ public class LangzeitCommandListener extends CommandManager {
 					}
 					else
 					{
-						player.sendMessage(ChatColor.RED+"Du bist aus dem Event ausgeschieden!");
+						player.sendMessage(prefix+ChatColor.RED+"Du bist aus dem Event ausgeschieden!");
 					}
 				} 
 				else 
 				{
-					player.sendMessage(ChatColor.RED+"Das Event ist momentan nicht aktiviert!");
+					player.sendMessage(prefix+ChatColor.RED+"Das Event ist momentan nicht aktiviert!");
 				}
 			}
 			
@@ -63,12 +63,12 @@ public class LangzeitCommandListener extends CommandManager {
 					}
 					else
 					{
-						player.sendMessage(ChatColor.RED+"Du befindest dich nicht im Event!");
+						player.sendMessage(prefix+ChatColor.RED+"Du befindest dich nicht im Event!");
 					}
 				}
 				else
 				{
-					player.sendMessage(ChatColor.RED+"Das Event ist momentan nicht aktiviert!");
+					player.sendMessage(prefix+ChatColor.RED+"Das Event ist momentan nicht aktiviert!");
 				}
 			}
 			
