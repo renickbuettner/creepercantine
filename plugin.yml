@@ -1,0 +1,8 @@
+name: CreeperCantineShared
+main: com.speedyphil.Core.CreeperCantineShared
+version: 1.0
+author: philip260897
+commands:
+  request:
+    description: Request - Befehle ausfuehren
+    usage: /request
