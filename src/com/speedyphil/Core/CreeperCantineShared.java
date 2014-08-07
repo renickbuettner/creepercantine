@@ -40,6 +40,7 @@ public class CreeperCantineShared extends JavaPlugin
 			lzMG.loadBlacklist();
 			pm.registerEvents(lzPL, this);
 		}
+		this.getCommand("le").setExecutor(lzCL);
 
 	}
 	
