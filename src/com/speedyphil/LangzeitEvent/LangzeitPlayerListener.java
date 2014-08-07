@@ -5,6 +5,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 
 import com.speedyphil.Core.CreeperCantineShared;
 
@@ -31,4 +32,10 @@ public class LangzeitPlayerListener implements Listener {
 		
 	}
 	
+	@EventHandler
+	public void onPlayerRespawn(PlayerRespawnEvent event)
+	{
+	
+		event.getPlayer().chat("/spawn");
+	}
 }
