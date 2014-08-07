@@ -26,5 +26,14 @@ public class LangzeitManager {
 		{
 			CreeperCantineShared.writeToLog("Das LangzeitEvent ist nicht aktiviert!");
 		}
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public String getWorldName() {
+		return worldName;
 	}	
+	
 }
