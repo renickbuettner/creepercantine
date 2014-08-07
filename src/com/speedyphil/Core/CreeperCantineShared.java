@@ -61,7 +61,7 @@ public class CreeperCantineShared extends JavaPlugin
 	
 	
 	// Ist Enabled
-	public static boolean isEnabled(){
+	public static boolean Enabled(){
 		FileConfiguration config = plugin.getConfig();
 		String result = config.getString("enable-langzeitevent");
 		if(result == "true") return true; else return false;	
