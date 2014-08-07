@@ -26,6 +26,7 @@ public class Main {
 		System.out.println("Connecting...");
 		Client client = new Client("Philip");
 		client.openConnection("10.0.0.3", 25565);
+		asd;fkjasld;fkjasld;fkjas;fkldjkldsfja;fjkds;kadsfj
 		
 		client.addMessageEvent(new MessageEventListener()
 		{
