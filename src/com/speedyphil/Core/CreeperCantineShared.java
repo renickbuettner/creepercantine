@@ -25,7 +25,7 @@ public class CreeperCantineShared extends JavaPlugin
 	private static LangzeitCommandListener lzCL = new LangzeitCommandListener();
 	private static LangzeitPlayerListener lzPL = new LangzeitPlayerListener();
 	private static LangzeitConfiguration lzCF = new LangzeitConfiguration();
-	private static LangzeitManager lzMG = new LangzeitManager();
+	private static LangzeitManager lzMG;
 
 	private static String pluginname = "LangzeitEvent";
 	
@@ -40,12 +40,13 @@ public class CreeperCantineShared extends JavaPlugin
 		// Alles was beim Start getan werden muss hier rein c:
 		this.pm = Bukkit.getPluginManager();
 		this.plugin = this;
-		
+		System.out.println("######################################################################################################################");
 		enablePex();
 		enableWorldEdit();
 		loadConfig();
 		
 		lzCF.createConfig();
+		lzMG = new LangzeitManager();
 		if(lzMG.isEnabled())
 		{
 			lzMG.loadBlacklist();

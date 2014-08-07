@@ -59,7 +59,7 @@ public class LangzeitCommandListener extends CommandManager {
 				{
 					if(player.getWorld() == manager.getWorld())
 					{
-						player.chat("/spawn");
+						player.chat("/warp spawn");
 					}
 					else
 					{

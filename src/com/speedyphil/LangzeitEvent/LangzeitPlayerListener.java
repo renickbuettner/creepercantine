@@ -11,11 +11,11 @@ import com.speedyphil.Core.CreeperCantineShared;
 
 public class LangzeitPlayerListener implements Listener {
 
-	LangzeitManager lm = CreeperCantineShared.getLangzeitManager();
+	
 
 	@EventHandler
 	public void onDeath(PlayerDeathEvent e){
-		
+		LangzeitManager lm = CreeperCantineShared.getLangzeitManager();
 		// Ob Spieler in LangzeitEvent Welt gestorben ist
 
 		Player p = (Player) e.getEntity();
@@ -35,7 +35,8 @@ public class LangzeitPlayerListener implements Listener {
 	@EventHandler
 	public void onPlayerRespawn(PlayerRespawnEvent event)
 	{
-	
-		event.getPlayer().chat("/spawn");
+		LangzeitManager lm = CreeperCantineShared.getLangzeitManager();
+		if(event.getPlayer().getLocation().getWorld() == lm.getWorld())
+			event.getPlayer().chat("/warp spawn");
 	}
 }

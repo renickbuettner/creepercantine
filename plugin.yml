@@ -1,7 +1,7 @@
 name: CreeperCantineShared
 main: com.speedyphil.Core.CreeperCantineShared
 version: 1.0
-author: philip260897
+author: philip260897ANDsp33dy4ever
 commands:
   le:
     description: LangzeitEvent - Befehle ausfuehren
