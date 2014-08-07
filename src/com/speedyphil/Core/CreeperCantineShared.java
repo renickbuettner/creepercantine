@@ -23,20 +23,11 @@ public class CreeperCantineShared extends JavaPlugin
 	
 	public void onEnable()
 	{
-		// Falls Event in Config aktiviert
-		if(configString("enable-langzeitevent") == "true"){
 		
 			// Alles was beim Start getan werden muss hier rein c:
 			this.pm = Bukkit.getPluginManager();
 			this.plugin = this;
 		
-			writeToLog("Das Langzeitevent wird gestartet. HAPPY PLAYING c:");
-			
-		}
-		else
-		{
-			writeToLog("Das Langzeitevent ist nicht aktiviert.");
-		}
 		
 	}
 	
@@ -68,4 +59,12 @@ public class CreeperCantineShared extends JavaPlugin
 		return true;
 	}
 	
+	
+	// Ist Enabled
+	public static boolean isEnabled(){
+		FileConfiguration config = plugin.getConfig();
+		String result = config.getString("enable-langzeitevent");
+		if(result == "true") return true; else return false;	
+	}
 }
+
