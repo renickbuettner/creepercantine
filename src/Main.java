@@ -28,7 +28,7 @@ public class Main {
 		client.openConnection("10.0.0.3", 25565);
 		asd;fkjasld;fkjasld;fkjas;fkldjkldsfja;fjkds;kadsfj
 		
-		System.out.println("SPEEDY");
+		System.out.println("SPEEDY SHANE");
 		System.out.println("PHILIP");
 		
 		client.addMessageEvent(new MessageEventListener()
