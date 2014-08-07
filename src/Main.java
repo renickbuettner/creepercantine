@@ -35,6 +35,8 @@ public class Main {
 		System.out.println("PHILIP");
 		System.out.println(":D"); ;
 		
+		System.out.println("SPEEDY");
+		
 		client.addMessageEvent(new MessageEventListener()
 		{
 			@Override
