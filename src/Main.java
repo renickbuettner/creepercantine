@@ -29,6 +29,7 @@ public class Main {
 		asd;fkjasld;fkjasld;fkjas;fkldjkldsfja;fjkds;kadsfj
 		
 		System.out.println("SPEEDY");
+		System.out.println("PHILIP");
 		
 		client.addMessageEvent(new MessageEventListener()
 		{
