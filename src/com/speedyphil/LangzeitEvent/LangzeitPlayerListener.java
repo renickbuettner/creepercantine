@@ -1,5 +1,6 @@
 package com.speedyphil.LangzeitEvent;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -20,10 +21,11 @@ public class LangzeitPlayerListener implements Listener {
 		
 		String world = p.getWorld().getName();
 		
-		if( world == lm.getWorldName()  ){
+		if( world.equals( lm.getWorldName() ) ){
 		
+			lm.blacklistPlayer( p.getUniqueId().toString() );
 			
-			
+			p.sendMessage( ChatColor.GOLD + "[LangzeitEvent] " + ChatColor.GRAY + " Du bist gestorben! Leider bist du nun ausgeschieden." );
 			
 		}
 		
