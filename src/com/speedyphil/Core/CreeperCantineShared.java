@@ -16,19 +16,21 @@ public class CreeperCantineShared extends JavaPlugin
 	private static LangzeitPlayerListener lzPL = new LangzeitPlayerListener();
 	private static LangzeitConfiguration lzCF = new LangzeitConfiguration();
 
-	public static String pluginname = "LangzeitEvent";	
+	private static String pluginname = "LangzeitEvent";
+	
 	
 	private static Plugin plugin;
 	private PluginManager pm;
+	private static FileConfiguration config;
 	
 	public void onEnable()
 	{
-		
-			// Alles was beim Start getan werden muss hier rein c:
-			this.pm = Bukkit.getPluginManager();
-			this.plugin = this;
-		
-		
+
+		// Alles was beim Start getan werden muss hier rein c:
+		this.pm = Bukkit.getPluginManager();
+		this.plugin = this;
+
+
 	}
 	
 	public void onDisable()
@@ -36,9 +38,7 @@ public class CreeperCantineShared extends JavaPlugin
 
 	}
 	
-	public static LangzeitConfiguration getLangzeitConfiguration() {
-		return lzCF;
-	}
+
 	
 	// LŠd die Config
 	public void loadConfig(){
@@ -59,12 +59,12 @@ public class CreeperCantineShared extends JavaPlugin
 		return true;
 	}
 	
+	public static Plugin getPlugin() {
+		return plugin;
+	}
 	
-	// Ist Enabled
-	public static boolean Enabled(){
-		FileConfiguration config = plugin.getConfig();
-		String result = config.getString("enable-langzeitevent");
-		if(result == "true") return true; else return false;	
+	public static LangzeitConfiguration getLangzeitConfiguration() {
+		return lzCF;
 	}
 }
 
