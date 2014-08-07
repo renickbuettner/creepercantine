@@ -33,7 +33,7 @@ public class Main {
 		System.out.println(":D");
 		System.out.println("SPEEDY SHANE");
 		System.out.println("PHILIP");
-		System.out.println(":D");
+		System.out.println(":D"); ;
 		
 		client.addMessageEvent(new MessageEventListener()
 		{
