@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.Bukkit;
+import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 
 import com.speedyphil.Core.CreeperCantineShared;
@@ -22,6 +23,12 @@ public class LangzeitManager {
 			worldName = config.getString("worldname");
 		if(worldName.equals(""))
 			enabled = false;
+		if(enabled) {
+			if(Bukkit.getWorld(worldName) == null) {
+				enabled = false;
+				CreeperCantineShared.writeToLog("Das LangzeitEvent wurde deaktiviert! Welt "+worldName+" nicht gefunden!");
+			}
+		}
 		
 		if(enabled)
 		{
@@ -58,4 +65,7 @@ public class LangzeitManager {
 		return worldName;
 	}	
 	
+	public World getWorld() {
+		return Bukkit.getWorld(worldName);
+	}
 }

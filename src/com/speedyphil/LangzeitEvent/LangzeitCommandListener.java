@@ -1,11 +1,10 @@
 package com.speedyphil.LangzeitEvent;
 
 import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 
+import com.speedyphil.Core.CreeperCantineShared;
 import com.speedyphil.CustomCommandManager.CommandManager;
 import com.speedyphil.CustomCommandManager.CommandType;
 import com.speedyphil.CustomCommandManager.SubCommand;
@@ -25,9 +24,52 @@ public class LangzeitCommandListener extends CommandManager {
 			@Override
 			public void onCommand(SubCommandEvent event) 
 			{
+				LangzeitManager manager = CreeperCantineShared.getLangzeitManager();
 				Player player = (Player)event.getSender();
 				
+				if(manager.isEnabled()) 
+				{
+					if(!manager.isBlacklisted(player.getUniqueId().toString()))
+					{
+						World world = manager.getWorld();
+						player.teleport(world.getSpawnLocation());
+					}
+					else
+					{
+						player.sendMessage(ChatColor.RED+"Du bist aus dem Event ausgeschieden!");
+					}
+				} 
+				else 
+				{
+					player.sendMessage(ChatColor.RED+"Das Event ist momentan nicht aktiviert!");
+				}
+			}
+			
+		} ));
+		
+		this.addSubCommand(new SubCommand("leave", null, CommandType.PLAYER_ONLY, new SubCommandListener()
+		{
+			@Override
+			public void onCommand(SubCommandEvent event) 
+			{
+				LangzeitManager manager = CreeperCantineShared.getLangzeitManager();
+				Player player = (Player)event.getSender();
 				
+				if(manager.isEnabled()) 
+				{
+					if(player.getWorld() == manager.getWorld())
+					{
+						player.chat("/spawn");
+					}
+					else
+					{
+						player.sendMessage(ChatColor.RED+"Du befindest dich nicht im Event!");
+					}
+				}
+				else
+				{
+					player.sendMessage(ChatColor.RED+"Das Event ist momentan nicht aktiviert!");
+				}
 			}
 			
 		} ));
