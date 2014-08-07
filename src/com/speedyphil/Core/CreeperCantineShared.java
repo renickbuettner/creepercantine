@@ -23,6 +23,11 @@ public class CreeperCantineShared extends JavaPlugin
 	
 	public void onEnable()
 	{
+		
+		if(configstring("enable-langzeitevent") == "true"){
+			
+		}
+		
 		this.pm = Bukkit.getPluginManager();
 		this.plugin = this;
 		
