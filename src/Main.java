@@ -35,7 +35,7 @@ public class Main {
 		System.out.println("PHILIP");
 		System.out.println(":D"); ;
 		
-		System.out.println("SPEEDY MEINT LOL");
+		System.out.println("Philip MEINT LOL");
 		
 		client.addMessageEvent(new MessageEventListener()
 		{
