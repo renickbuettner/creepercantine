@@ -22,5 +22,9 @@ public class LangzeitManager {
 		{
 			CreeperCantineShared.writeToLog("Das LangzeitEvent ist auf der Welt "+worldName+" aktiviert!");
 		}
+		else
+		{
+			CreeperCantineShared.writeToLog("Das LangzeitEvent ist nicht aktiviert!");
+		}
 	}	
 }
