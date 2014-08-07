@@ -33,13 +33,19 @@ public class CreeperCantineShared extends JavaPlugin
 		this.plugin = this;
 		
 		loadConfig();
-
+		
+		lzCF.createConfig();
+		if(lzMG.isEnabled())
+		{
+			lzMG.loadBlacklist();
+			pm.registerEvents(lzPL, this);
+		}
 
 	}
 	
 	public void onDisable()
 	{
-
+		lzMG.saveBlacklist();
 	}
 	
 

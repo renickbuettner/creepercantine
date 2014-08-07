@@ -1,11 +1,15 @@
 package com.speedyphil.LangzeitEvent;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bukkit.configuration.file.FileConfiguration;
 
 import com.speedyphil.Core.CreeperCantineShared;
 
 public class LangzeitManager {
 
+	private List<String> blacklist = new ArrayList<String>();
 	private boolean enabled = false;
 	private String worldName = "";
 	
@@ -28,6 +32,23 @@ public class LangzeitManager {
 		}
 	}
 
+	public void blacklistPlayer(String UUID) {
+		if(!blacklist.contains(UUID))
+			blacklist.add(UUID);
+	}
+	
+	public boolean isBlacklisted(String UUID) {
+		return blacklist.contains(UUID);
+	}
+	
+	public void loadBlacklist() {
+		blacklist = CreeperCantineShared.getLangzeitConfiguration().loadNames();
+	}
+	
+	public void saveBlacklist() {
+		CreeperCantineShared.getLangzeitConfiguration().saveNames(blacklist);
+	}
+	
 	public boolean isEnabled() {
 		return enabled;
 	}
