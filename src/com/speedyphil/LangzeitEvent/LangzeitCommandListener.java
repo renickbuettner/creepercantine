@@ -101,14 +101,14 @@ public class LangzeitCommandListener extends CommandManager {
 				if(manager.isEnabled() == true)
 				{
 					manager.setEnabled(false);
+					player.sendMessage(prefix+ChatColor.RED+"Langzeit-Event deaktiviert!");	
 					ccs.setConfig("langzeitevent.enable", "true");
-					player.sendMessage(prefix+ChatColor.GREEN+"Langzeit-Event aktiviert!");
 				}
 				else
 				{
 					manager.setEnabled(true);
 					ccs.setConfig("langzeitevent.enable", "false");
-					player.sendMessage(prefix+ChatColor.RED+"Langzeit-Event deaktiviert!");	
+					player.sendMessage(prefix+ChatColor.GREEN+"Langzeit-Event aktiviert!");
 				}
 			}
 			
