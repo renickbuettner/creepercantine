@@ -50,6 +50,7 @@ public class LangzeitManager {
 			{
 				//BEISPIEL LISTE
 				consumeBlacklist.add("APPLE");
+				CreeperCantineShared.getPlugin().saveConfig();
 				config.set("langzeitevent.consume_blacklist", consumeBlacklist);
 				consumeBlacklist = config.getStringList("langzeitevent.consume_blacklist");
 			}
@@ -97,10 +98,6 @@ public class LangzeitManager {
 	
 	public boolean isConsumeBlacklisted(String material) {
 		return consumeBlacklist.contains(material);
-	}
-	
-	public void saveConsumeBlacklist() {
-		config.set("langzeitevent.consume_blacklist", this.consumeBlacklist);
 	}
 	
 	public boolean isEnabled() {
