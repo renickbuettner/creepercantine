@@ -33,27 +33,28 @@ public class LangzeitManager {
 				enabled = false;
 				CreeperCantineShared.writeToLog("Das LangzeitEvent wurde deaktiviert! Welt "+worldName+" nicht gefunden!");
 			}
-			if(config.contains("langzeitevent.spawn"))
-			{
-				spawn = new Location(Bukkit.getWorld(worldName),
-									 config.getInt("langzeitevent.spawn.x"),
-									 config.getInt("langzeitevent.spawn.y"),
-									 config.getInt("langzeitevent.spawn.z"),
-									 (float)config.getDouble("langzeitevent.spawn.yaw"),
-									 (float)config.getDouble("langzeitevent.spawn.pitch"));
-			}
-			if(config.contains("langzeitevent.consume_blacklist"))
-			{
-				consumeBlacklist = config.getStringList("langzeitevent.consume_blacklist");
-			}
-			else
-			{
-				//BEISPIEL LISTE
-				consumeBlacklist.add("APPLE");
-				CreeperCantineShared.getPlugin().saveConfig();
-				config.set("langzeitevent.consume_blacklist", consumeBlacklist);
-				consumeBlacklist = config.getStringList("langzeitevent.consume_blacklist");
-			}
+		}
+		
+		if(config.contains("langzeitevent.spawn"))
+		{
+			spawn = new Location(Bukkit.getWorld(worldName),
+								 config.getInt("langzeitevent.spawn.x"),
+								 config.getInt("langzeitevent.spawn.y"),
+								 config.getInt("langzeitevent.spawn.z"),
+								 (float)config.getDouble("langzeitevent.spawn.yaw"),
+								 (float)config.getDouble("langzeitevent.spawn.pitch"));
+		}
+		if(config.contains("langzeitevent.consume_blacklist"))
+		{
+			consumeBlacklist = config.getStringList("langzeitevent.consume_blacklist");
+		}
+		else
+		{
+			//BEISPIEL LISTE
+			consumeBlacklist.add("APPLE");
+			CreeperCantineShared.getPlugin().saveConfig();
+			config.set("langzeitevent.consume_blacklist", consumeBlacklist);
+			consumeBlacklist = config.getStringList("langzeitevent.consume_blacklist");
 		}
 		
 		if(enabled)

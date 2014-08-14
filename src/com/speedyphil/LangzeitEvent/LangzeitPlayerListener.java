@@ -49,6 +49,7 @@ public class LangzeitPlayerListener implements Listener {
 		LangzeitManager lm = CreeperCantineShared.getLangzeitManager();
 		if(event.getPlayer().getLocation().getWorld() == lm.getWorld())
 		{
+			
 			if(lm.isConsumeBlacklisted(event.getItem().getType().name()))
 			{
 				event.setCancelled(true);
