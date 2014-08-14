@@ -38,8 +38,7 @@ public class LangzeitPlayerListener implements Listener {
 		LangzeitManager lm = CreeperCantineShared.getLangzeitManager();
 		if(event.getPlayer().getLocation().getWorld() == lm.getWorld())
 		{
-			event.getPlayer().chat("/warp spawn");
-	
+			event.setRespawnLocation(lm.getSpawn());
 		}
 	}
 }
