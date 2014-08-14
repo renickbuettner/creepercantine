@@ -87,6 +87,28 @@ public class LangzeitCommandListener extends CommandManager {
 			}
 			
 		} ));
+		
+		this.addSubCommand(new SubCommand("toggle", null, CommandType.OP_ONLY, new SubCommandListener()
+		{
+			@Override
+			public void onCommand(SubCommandEvent event) 
+			{
+				LangzeitManager manager = CreeperCantineShared.getLangzeitManager();
+				Player player = (Player)event.getSender();
+				
+				if(manager.isEnabled() == true)
+				{
+					manager.setEnabled(false);
+					player.sendMessage(prefix+ChatColor.GREEN+"Langzeit-Event aktiviert!");
+				}
+				else
+				{
+					manager.setEnabled(true);
+					player.sendMessage(prefix+ChatColor.RED+"Langzeit-Event deaktiviert!");	
+				}
+			}
+			
+		} ));
 	}
 
 }
