@@ -74,6 +74,7 @@ public class LangzeitManager {
 		config.set("langzeitevent.spawn.z", location.getBlockZ());
 		config.set("langzeitevent.spawn.yaw", location.getYaw());
 		config.set("langzeitevent.spawn.pitch", location.getPitch());
+		CreeperCantineShared.getPlugin().saveConfig();
 	}
 	
 	public Location getSpawn() {
