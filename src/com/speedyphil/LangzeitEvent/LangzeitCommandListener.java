@@ -82,7 +82,7 @@ public class LangzeitCommandListener extends CommandManager {
 				LangzeitManager manager = CreeperCantineShared.getLangzeitManager();
 				Player player = (Player)event.getSender();
 				
-				
+				manager.setSpawn(player.getLocation());
 			}
 			
 		} ));

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 
@@ -11,12 +12,14 @@ import com.speedyphil.Core.CreeperCantineShared;
 
 public class LangzeitManager {
 
+	private FileConfiguration config;
 	private List<String> blacklist = new ArrayList<String>();
 	private boolean enabled = false;
 	private String worldName = "";
+	private Location spawn = null;
 	
 	public LangzeitManager() {
-		FileConfiguration config = CreeperCantineShared.getPlugin().getConfig();
+		config = CreeperCantineShared.getPlugin().getConfig();
 		if(config.contains("langzeitevent.enable"))
 			enabled = config.getBoolean("langzeitevent.enable");
 		if(config.contains("langzeitevent.worldname"))
@@ -27,6 +30,15 @@ public class LangzeitManager {
 			if(Bukkit.getWorld(worldName) == null) {
 				enabled = false;
 				CreeperCantineShared.writeToLog("Das LangzeitEvent wurde deaktiviert! Welt "+worldName+" nicht gefunden!");
+			}
+			if(config.contains("langzeitevent.spawn"))
+			{
+				spawn = new Location(Bukkit.getWorld(worldName),
+									 config.getInt("langzeitevent.spawn.x"),
+									 config.getInt("langzeitevent.spawn.y"),
+									 config.getInt("langzeitevent.spawn.z"),
+									 (float)config.getDouble("langzeitevent.spawn.yaw"),
+									 (float)config.getDouble("langzeitevent.spawn.pitch"));
 			}
 		}
 		
@@ -40,6 +52,19 @@ public class LangzeitManager {
 		}
 	}
 
+	public void setSpawn(Location location) {
+		spawn = location;
+		config.set("langzeitevent.spawn.x", location.getBlockX());
+		config.set("langzeitevent.spawn.y", location.getBlockY());
+		config.set("langzeitevent.spawn.z", location.getBlockZ());
+		config.set("langzeitevent.spawn.yaw", location.getYaw());
+		config.set("langzeitevent.spawn.pitch", location.getPitch());
+	}
+	
+	public Location getSpawn() {
+		return spawn;
+	}
+	
 	public void blacklistPlayer(String UUID) {
 		if(!blacklist.contains(UUID))
 			blacklist.add(UUID);
@@ -67,5 +92,9 @@ public class LangzeitManager {
 	
 	public World getWorld() {
 		return Bukkit.getWorld(worldName);
+	}
+	
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 }
