@@ -27,7 +27,7 @@ public class ForumSigns implements Listener {
 				
 				// Zeile 1 verändern bzw. Farbig machen
 				
-				e.setLine(0, ChatColor.DARK_AQUA+"[Forum]" );
+				e.setLine(0, ChatColor.DARK_AQUA+"[Beitrag]" );
 				
 				// Sende Message an Spieler
 					
@@ -66,7 +66,7 @@ public class ForumSigns implements Listener {
 				
 				// Wenn Tag in erster Zeile des Schildes
 				
-				if( s.getLine(0).equals( ChatColor.DARK_AQUA + "[Forum]" ) || s.getLine(0).equals( ChatColor.DARK_AQUA + "[forum]" )  ){
+				if( s.getLine(0).equals( ChatColor.DARK_AQUA + "[Forum]" ) || s.getLine(0).equals( ChatColor.DARK_AQUA + "[Beitrag]" )  ){
 					
 					// Get Topic ID from Sign
 					
