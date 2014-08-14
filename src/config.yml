@@ -1,5 +1,5 @@
 langzeitevent:
-  enable-langzeitevent: false
+  enable: false
   worldname: ''
 websigns:
   forum: http://forum.creepercantine.de

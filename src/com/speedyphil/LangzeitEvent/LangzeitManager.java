@@ -17,10 +17,10 @@ public class LangzeitManager {
 	
 	public LangzeitManager() {
 		FileConfiguration config = CreeperCantineShared.getPlugin().getConfig();
-		if(config.contains("enable-langzeitevent"))
-			enabled = config.getBoolean("enable-langzeitevent");
-		if(config.contains("worldname"))
-			worldName = config.getString("worldname");
+		if(config.contains("langzeitevent.enable"))
+			enabled = config.getBoolean("langzeitevent.enable");
+		if(config.contains("langzeitevent.worldname"))
+			worldName = config.getString("langzeitevent.worldname");
 		if(worldName.equals(""))
 			enabled = false;
 		if(enabled) {
