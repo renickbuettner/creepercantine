@@ -1,5 +1,6 @@
 package com.speedyphil.LangzeitEvent;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,6 +60,12 @@ public class LangzeitManager {
 		config.set("langzeitevent.spawn.z", location.getBlockZ());
 		config.set("langzeitevent.spawn.yaw", location.getYaw());
 		config.set("langzeitevent.spawn.pitch", location.getPitch());
+		try {
+			config.save(config.getCurrentPath());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public Location getSpawn() {
