@@ -3,6 +3,7 @@ package com.speedyphil.LangzeitEvent;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 
 import com.speedyphil.Core.CreeperCantineShared;
 import com.speedyphil.CustomCommandManager.CommandManager;
@@ -94,7 +95,7 @@ public class LangzeitCommandListener extends CommandManager {
 			public void onCommand(SubCommandEvent event) 
 			{
 				LangzeitManager manager = CreeperCantineShared.getLangzeitManager();
-				CreeperCantineShared ccs = new CreeperCantineShared();
+				Plugin ccs = CreeperCantineShared.getPlugin();
 				Player player = (Player)event.getSender();
 				
 				if(manager.isEnabled() == true)
