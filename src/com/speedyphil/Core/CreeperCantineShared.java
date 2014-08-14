@@ -139,6 +139,16 @@ public class CreeperCantineShared extends JavaPlugin
 		this.saveConfig();
 	}
 	
+	// Setzt Einstellung
+	
+	public boolean setConfig(String path, String value){
+		FileConfiguration cfg = this.getConfig();
+		cfg.options().copyDefaults(true);
+		cfg.set(path, value);
+		this.saveConfig();
+		return true;
+	}
+	
 	// LŠd Einstellung aus Config 
 	public static String configString(String value){
 		FileConfiguration config = plugin.getConfig();

@@ -94,16 +94,19 @@ public class LangzeitCommandListener extends CommandManager {
 			public void onCommand(SubCommandEvent event) 
 			{
 				LangzeitManager manager = CreeperCantineShared.getLangzeitManager();
+				CreeperCantineShared ccs = new CreeperCantineShared();
 				Player player = (Player)event.getSender();
 				
 				if(manager.isEnabled() == true)
 				{
 					manager.setEnabled(false);
+					ccs.setConfig("langzeitevent.enable", "true");
 					player.sendMessage(prefix+ChatColor.GREEN+"Langzeit-Event aktiviert!");
 				}
 				else
 				{
 					manager.setEnabled(true);
+					ccs.setConfig("langzeitevent.enable", "false");
 					player.sendMessage(prefix+ChatColor.RED+"Langzeit-Event deaktiviert!");	
 				}
 			}
