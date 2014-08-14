@@ -15,6 +15,7 @@ public class LangzeitManager {
 
 	private FileConfiguration config;
 	private List<String> blacklist = new ArrayList<String>();
+	private List<String> consumeBlacklist = new ArrayList<String>();
 	private boolean enabled = false;
 	private String worldName = "";
 	private Location spawn = null;
@@ -40,6 +41,17 @@ public class LangzeitManager {
 									 config.getInt("langzeitevent.spawn.z"),
 									 (float)config.getDouble("langzeitevent.spawn.yaw"),
 									 (float)config.getDouble("langzeitevent.spawn.pitch"));
+			}
+			if(config.contains("langzeitevent.consume_blacklist"))
+			{
+				consumeBlacklist = config.getStringList("langzeitevent.consume_blacklist");
+			}
+			else
+			{
+				//BEISPIEL LISTE
+				consumeBlacklist.add("APPLE");
+				config.set("langzeitevent.consume_blacklist", consumeBlacklist);
+				consumeBlacklist = config.getStringList("langzeitevent.consume_blacklist");
 			}
 		}
 		
@@ -81,6 +93,14 @@ public class LangzeitManager {
 	
 	public void saveBlacklist() {
 		CreeperCantineShared.getLangzeitConfiguration().saveNames(blacklist);
+	}
+	
+	public boolean isConsumeBlacklisted(String material) {
+		return consumeBlacklist.contains(material);
+	}
+	
+	public void saveConsumeBlacklist() {
+		config.set("langzeitevent.consume_blacklist", this.consumeBlacklist);
 	}
 	
 	public boolean isEnabled() {
