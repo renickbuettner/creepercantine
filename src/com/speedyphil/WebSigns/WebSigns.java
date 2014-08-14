@@ -18,6 +18,7 @@ public class WebSigns  implements Listener {
 	private String prefix = pc + "[WebSigns] " + tc; // Prefix
 	
 	private String options[] = {"webseite", "forum", "regeln"};
+	private String values[] = { CreeperCantineShared.configString("websigns.webseite"), CreeperCantineShared.configString("websigns.forum"), CreeperCantineShared.configString("websigns.regeln")};
 	
 	@EventHandler
 	
@@ -47,7 +48,6 @@ public class WebSigns  implements Listener {
 					}
 					
 				}
-				
 				
 				if(checked == 1){
 				
@@ -100,15 +100,11 @@ public class WebSigns  implements Listener {
 					
 					String info = s.getLine(1);
 					
+					for(String o: options){
 					
-					
-					
-					
-					
-					
-					
-					
-					
+						if(o.equals(s.getLine(2)));
+						
+					}
 					
 				}
 				
