@@ -83,6 +83,7 @@ public class LangzeitCommandListener extends CommandManager {
 				Player player = (Player)event.getSender();
 				
 				manager.setSpawn(player.getLocation());
+				player.sendMessage(prefix+"Der Spawn wurde festgelegt!");
 			}
 			
 		} ));
