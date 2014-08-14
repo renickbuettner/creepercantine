@@ -18,6 +18,8 @@ import com.speedyphil.LangzeitEvent.LangzeitCommandListener;
 import com.speedyphil.LangzeitEvent.LangzeitConfiguration;
 import com.speedyphil.LangzeitEvent.LangzeitManager;
 import com.speedyphil.LangzeitEvent.LangzeitPlayerListener;
+import com.speedyphil.WebSigns.ForumSigns;
+import com.speedyphil.WebSigns.WebSigns;
 
 
 public class CreeperCantineShared extends JavaPlugin
@@ -44,6 +46,12 @@ public class CreeperCantineShared extends JavaPlugin
 		enablePex();
 		enableWorldEdit();
 		loadConfig();
+		
+		ForumSigns fs = new ForumSigns();
+		WebSigns ws = new WebSigns();
+		
+		pm.registerEvents(fs, this);
+		pm.registerEvents(ws, this);
 		
 		lzCF.createConfig();
 		lzMG = new LangzeitManager();
