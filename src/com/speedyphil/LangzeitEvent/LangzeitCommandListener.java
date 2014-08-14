@@ -95,7 +95,7 @@ public class LangzeitCommandListener extends CommandManager {
 			public void onCommand(SubCommandEvent event) 
 			{
 				LangzeitManager manager = CreeperCantineShared.getLangzeitManager();
-				Plugin ccs = CreeperCantineShared.getPlugin();
+				CreeperCantineShared ccs = (CreeperCantineShared)CreeperCantineShared.getPlugin();
 				Player player = (Player)event.getSender();
 				
 				if(manager.isEnabled() == true)
