@@ -27,7 +27,7 @@ public class ForumSigns implements Listener {
 				
 				// Zeile 1 verändern bzw. Farbig machen
 				
-				e.setLine(0, "§3[Forum]" );
+				e.setLine(0, ChatColor.DARK_AQUA+"[Forum]" );
 				
 				// Sende Message an Spieler
 					
