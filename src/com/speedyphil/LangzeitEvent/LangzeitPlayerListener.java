@@ -6,6 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
+import org.bukkit.event.player.PlayerItemConsumeEvent;
 
 import com.speedyphil.Core.CreeperCantineShared;
 
@@ -39,6 +40,17 @@ public class LangzeitPlayerListener implements Listener {
 		if(event.getPlayer().getLocation().getWorld() == lm.getWorld())
 		{
 			event.setRespawnLocation(lm.getSpawn());
+		}
+	}
+	
+	@EventHandler
+	public void onPlayerEat(PlayerItemConsumeEvent event)
+	{
+		LangzeitManager lm = CreeperCantineShared.getLangzeitManager();
+		if(event.getPlayer().getLocation().getWorld() == lm.getWorld())
+		{
+			System.out.println("ESSEN!@!!");
+			System.out.println(event.getItem().getType().name());
 		}
 	}
 }
