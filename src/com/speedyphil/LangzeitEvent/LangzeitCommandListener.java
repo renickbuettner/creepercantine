@@ -73,6 +73,19 @@ public class LangzeitCommandListener extends CommandManager {
 			}
 			
 		} ));
+		
+		this.addSubCommand(new SubCommand("setspawn", null, CommandType.OP_ONLY, new SubCommandListener()
+		{
+			@Override
+			public void onCommand(SubCommandEvent event) 
+			{
+				LangzeitManager manager = CreeperCantineShared.getLangzeitManager();
+				Player player = (Player)event.getSender();
+				
+				
+			}
+			
+		} ));
 	}
 
 }
