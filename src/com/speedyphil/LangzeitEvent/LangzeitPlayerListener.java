@@ -4,8 +4,10 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
 
@@ -38,33 +40,26 @@ public class LangzeitPlayerListener implements Listener {
 	public void onPlayerRespawn(PlayerRespawnEvent event)
 	{
 		LangzeitManager lm = CreeperCantineShared.getLangzeitManager();
-		if(event.getPlayer().getLocation().getWorld() == lm.getWorld())
+		if(lm.isInEvent(event.getPlayer()))
 		{
 			event.setRespawnLocation(lm.getSpawn());
 		}
 	}
 	
 	@EventHandler
-	public void onPlayerEat(PlayerItemConsumeEvent event)
+	public void onPlayerInteract(PlayerInteractEvent event)
 	{
-		System.out.println("1");
-		LangzeitManager lm = CreeperCantineShared.getLangzeitManager();
-		if(event.getPlayer().getLocation().getWorld() == lm.getWorld())
+		if(event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK)
 		{
-			System.out.println("2");
-			if(!lm.isConsumeWhitelisted(event.getItem().getType().name()))
+			LangzeitManager lm = CreeperCantineShared.getLangzeitManager();
+			if(lm.isInEvent(event.getPlayer()))
 			{
-				System.out.println("3");
-				event.setCancelled(true);
-				event.getPlayer().updateInventory();
-				
+				if(lm.isConsumeBlacklisted(event.getItem().getType().name()))
+				{
+					event.setCancelled(true);
+					event.getPlayer().sendMessage(ChatColor.RED+"Du darfst dieses Item nicht konsumieren!");
+				}
 			}
 		}
-	}
-	
-	@EventHandler
-	public void onPlayerFoodLevelChange(FoodLevelChangeEvent event)
-	{
-		
 	}
 }

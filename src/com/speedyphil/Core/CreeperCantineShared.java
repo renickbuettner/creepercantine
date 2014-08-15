@@ -66,7 +66,7 @@ public class CreeperCantineShared extends JavaPlugin
 	
 	public void onDisable()
 	{
-		lzMG.saveBlacklist();
+		//lzMG.saveBlacklist();
 	}
 	
 

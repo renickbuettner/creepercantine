@@ -8,6 +8,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
 
 import com.speedyphil.Core.CreeperCantineShared;
 
@@ -15,7 +16,7 @@ public class LangzeitManager {
 
 	private FileConfiguration config;
 	private List<String> blacklist = new ArrayList<String>();
-	private List<String> consumeWhitelist = new ArrayList<String>();
+	private List<String> consumeBlacklist = new ArrayList<String>();
 	private boolean enabled = false;
 	private String worldName = "";
 	private Location spawn = null;
@@ -44,9 +45,9 @@ public class LangzeitManager {
 								 (float)config.getDouble("langzeitevent.spawn.yaw"),
 								 (float)config.getDouble("langzeitevent.spawn.pitch"));
 		}
-		if(config.contains("langzeitevent.consume_whitelist"))
+		if(config.contains("langzeitevent.consume_blacklist"))
 		{
-			consumeWhitelist = config.getStringList("langzeitevent.consume_whitelist");
+			consumeBlacklist = config.getStringList("langzeitevent.consume_blacklist");
 		}
 		
 		if(enabled)
@@ -74,8 +75,10 @@ public class LangzeitManager {
 	}
 	
 	public void blacklistPlayer(String UUID) {
-		if(!blacklist.contains(UUID))
+		if(!blacklist.contains(UUID)) {
 			blacklist.add(UUID);
+			this.saveBlacklist();
+		}
 	}
 	
 	public boolean isBlacklisted(String UUID) {
@@ -90,8 +93,8 @@ public class LangzeitManager {
 		CreeperCantineShared.getLangzeitConfiguration().saveNames(blacklist);
 	}
 	
-	public boolean isConsumeWhitelisted(String material) {
-		return consumeWhitelist.contains(material);
+	public boolean isConsumeBlacklisted(String material) {
+		return consumeBlacklist.contains(material);
 	}
 	
 	public boolean isEnabled() {
@@ -108,5 +111,9 @@ public class LangzeitManager {
 	
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
+	}
+	
+	public boolean isInEvent(Player player) {
+		return player.getWorld() == getWorld();
 	}
 }
