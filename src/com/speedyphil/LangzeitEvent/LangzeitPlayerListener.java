@@ -54,6 +54,7 @@ public class LangzeitPlayerListener implements Listener {
 					return;
 				if(lm.isConsumeBlacklisted(event.getItem().getType().name()))
 				{
+					
 					event.setCancelled(true);
 					event.getPlayer().sendMessage(ChatColor.RED+"Du darfst dieses Item nicht konsumieren!");
 				}
