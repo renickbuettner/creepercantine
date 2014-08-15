@@ -62,7 +62,7 @@ public class LangzeitPlayerListener implements Listener {
 	}
 	
 	@EventHandler
-	public void onCommandPreProcess(PlayerCommandPreprocessEvent event)
+	public void onCommandPreProcess(PlayerCommandPreprocessEvent event) //WHITELIST FUER BEFEHLE DIE MAN WAEREND DEM EVENT VERWENDEN DARF
 	{
 		LangzeitManager lm = CreeperCantineShared.getLangzeitManager();
 		if(lm.isInEvent(event.getPlayer()))
