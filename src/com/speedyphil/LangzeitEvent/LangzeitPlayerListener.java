@@ -67,10 +67,13 @@ public class LangzeitPlayerListener implements Listener {
 		LangzeitManager lm = CreeperCantineShared.getLangzeitManager();
 		if(lm.isInEvent(event.getPlayer()))
 		{
-			if(!lm.isCommandWhiteisted(event.getMessage().replace("/", "").replace(" ", "_")))
+			if(!event.getPlayer().isOp())
 			{
-				event.setCancelled(true);
-				event.getPlayer().sendMessage(ChatColor.RED+"Du darfst diesen Befehl waerend dem Event nicht verwenden!");
+				if(!lm.isCommandWhiteisted(event.getMessage().replace("/", "").replace(" ", "_")))
+				{
+					event.setCancelled(true);
+					event.getPlayer().sendMessage(ChatColor.RED+"Du darfst diesen Befehl waerend dem Event nicht verwenden!");
+				}
 			}
 		}
 	}
