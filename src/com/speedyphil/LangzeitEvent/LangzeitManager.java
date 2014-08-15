@@ -38,7 +38,7 @@ public class LangzeitManager {
 		
 		if(config.contains("langzeitevent.spawn"))
 		{
-			spawn = new Location(Bukkit.getWorld(worldName),
+			spawn = new Location(Bukkit.getWorld(config.getString("langzeitevent.spawn.world")),
 								 config.getInt("langzeitevent.spawn.x"),
 								 config.getInt("langzeitevent.spawn.y"),
 								 config.getInt("langzeitevent.spawn.z"),
@@ -62,6 +62,7 @@ public class LangzeitManager {
 
 	public void setSpawn(Location location) {
 		spawn = location;
+		config.set("langzeitevent.spawn.world", location.getWorld().getName());
 		config.set("langzeitevent.spawn.x", location.getBlockX());
 		config.set("langzeitevent.spawn.y", location.getBlockY());
 		config.set("langzeitevent.spawn.z", location.getBlockZ());
