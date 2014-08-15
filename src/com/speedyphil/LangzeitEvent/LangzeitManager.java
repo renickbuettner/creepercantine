@@ -103,7 +103,12 @@ public class LangzeitManager {
 	}
 	
 	public boolean isCommandWhiteisted(String command) {
-		return commandWhitelist.contains(command.toUpperCase());
+		for(String s : commandWhitelist)
+		{
+			if(command.toUpperCase().startsWith(s))
+				return true;
+		}
+		return false;
 	}
 	
 	public boolean isEnabled() {
