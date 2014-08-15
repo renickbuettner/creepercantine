@@ -42,7 +42,6 @@ public class CreeperCantineShared extends JavaPlugin
 		// Alles was beim Start getan werden muss hier rein c:
 		this.pm = Bukkit.getPluginManager();
 		this.plugin = this;
-		System.out.println("######################################################################################################################");
 		enablePex();
 		enableWorldEdit();
 		loadConfig();

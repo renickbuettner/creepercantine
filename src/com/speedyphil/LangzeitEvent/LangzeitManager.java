@@ -17,6 +17,7 @@ public class LangzeitManager {
 	private FileConfiguration config;
 	private List<String> blacklist = new ArrayList<String>();
 	private List<String> consumeBlacklist = new ArrayList<String>();
+	private List<String> commandWhitelist = new ArrayList<String>();
 	private boolean enabled = false;
 	private String worldName = "";
 	private Location spawn = null;
@@ -48,6 +49,10 @@ public class LangzeitManager {
 		if(config.contains("langzeitevent.consume_blacklist"))
 		{
 			consumeBlacklist = config.getStringList("langzeitevent.consume_blacklist");
+		}
+		if(config.contains("langzeitevent.command_whitelist"))
+		{
+			commandWhitelist = config.getStringList("langzeitevent.command_whitelist");
 		}
 		
 		if(enabled)
@@ -96,6 +101,10 @@ public class LangzeitManager {
 	
 	public boolean isConsumeBlacklisted(String material) {
 		return consumeBlacklist.contains(material);
+	}
+	
+	public boolean isCommandWhiteisted(String command) {
+		return commandWhitelist.contains(command.toUpperCase());
 	}
 	
 	public boolean isEnabled() {

@@ -1,6 +1,10 @@
 langzeitevent:
   enable: false
   worldname: ''
+  consume_blacklist:
+  - PORK
+  command_whitelist:
+  - SPAWN
 websigns:
   forum: http://forum.creepercantine.de
   webseite: http://creepercantine.de
