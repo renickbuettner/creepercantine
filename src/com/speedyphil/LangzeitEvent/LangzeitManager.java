@@ -1,6 +1,5 @@
 package com.speedyphil.LangzeitEvent;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +7,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
 
 import com.speedyphil.Core.CreeperCantineShared;
 
@@ -16,6 +16,7 @@ public class LangzeitManager {
 	private FileConfiguration config;
 	private List<String> blacklist = new ArrayList<String>();
 	private List<String> consumeBlacklist = new ArrayList<String>();
+	private List<String> commandWhitelist = new ArrayList<String>();
 	private boolean enabled = false;
 	private String worldName = "";
 	private Location spawn = null;
@@ -37,7 +38,7 @@ public class LangzeitManager {
 		
 		if(config.contains("langzeitevent.spawn"))
 		{
-			spawn = new Location(Bukkit.getWorld(worldName),
+			spawn = new Location(Bukkit.getWorld(config.getString("langzeitevent.spawn.world")),
 								 config.getInt("langzeitevent.spawn.x"),
 								 config.getInt("langzeitevent.spawn.y"),
 								 config.getInt("langzeitevent.spawn.z"),
@@ -48,13 +49,9 @@ public class LangzeitManager {
 		{
 			consumeBlacklist = config.getStringList("langzeitevent.consume_blacklist");
 		}
-		else
+		if(config.contains("langzeitevent.command_whitelist"))
 		{
-			//BEISPIEL LISTE
-			consumeBlacklist.add("APPLE");
-			CreeperCantineShared.getPlugin().saveConfig();
-			config.set("langzeitevent.consume_blacklist", consumeBlacklist);
-			consumeBlacklist = config.getStringList("langzeitevent.consume_blacklist");
+			commandWhitelist = config.getStringList("langzeitevent.command_whitelist");
 		}
 		
 		if(enabled)
@@ -69,11 +66,13 @@ public class LangzeitManager {
 
 	public void setSpawn(Location location) {
 		spawn = location;
+		config.set("langzeitevent.spawn.world", location.getWorld().getName());
 		config.set("langzeitevent.spawn.x", location.getBlockX());
 		config.set("langzeitevent.spawn.y", location.getBlockY());
 		config.set("langzeitevent.spawn.z", location.getBlockZ());
 		config.set("langzeitevent.spawn.yaw", location.getYaw());
 		config.set("langzeitevent.spawn.pitch", location.getPitch());
+		CreeperCantineShared.getPlugin().saveConfig();
 	}
 	
 	public Location getSpawn() {
@@ -81,8 +80,10 @@ public class LangzeitManager {
 	}
 	
 	public void blacklistPlayer(String UUID) {
-		if(!blacklist.contains(UUID))
+		if(!blacklist.contains(UUID)) {
 			blacklist.add(UUID);
+			this.saveBlacklist();
+		}
 	}
 	
 	public boolean isBlacklisted(String UUID) {
@@ -101,6 +102,15 @@ public class LangzeitManager {
 		return consumeBlacklist.contains(material);
 	}
 	
+	public boolean isCommandWhiteisted(String command) {
+		for(String s : commandWhitelist)
+		{
+			if(command.toUpperCase().startsWith(s))
+				return true;
+		}
+		return false;
+	}
+	
 	public boolean isEnabled() {
 		return enabled;
 	}
@@ -115,5 +125,9 @@ public class LangzeitManager {
 	
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
+	}
+	
+	public boolean isInEvent(Player player) {
+		return player.getWorld() == getWorld();
 	}
 }
